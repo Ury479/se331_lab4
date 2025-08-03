@@ -22,6 +22,11 @@ const { message } = storeToRefs(store)
       </div>
     </header>
 
+    <!-- 测试内容 -->
+     <div class="bg-blue-500 text-white p-6 rounded-lg m-4">
+      <h1 class="text-2xl font-bold">Tailwind Test</h1>
+      <p class="mt-2">If this is blue with white text, Tailwind is working!</p>
+    </div>
     <RouterView />
   </div>
 </template>

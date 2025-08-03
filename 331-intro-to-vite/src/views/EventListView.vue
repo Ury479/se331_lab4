@@ -46,25 +46,32 @@ watchEffect(() => {
 
 <template>
   <section>
+    <h1>Event For Good</h1>
+    <div class="flex flex-col items-center">
+      <EventCard v-for="event in events" :key="event.id" :event="event" />
+      <div class="pagination"></div>
+    </div>
+
     <h2>Events - Page {{ page }}</h2>
     <p>Debug: Current page = {{ page }}, Total events = {{ totalEvents }}, Has next = {{ hasNextPage }}</p>
 
-    <div class="events" v-if="events && events.length > 0">
-      <EventCard
-          v-for="event in events"
-          :key="event.id"
-          :event="event"
-      />
-    </div>
-    
-    <div v-else-if="events && events.length === 0">
-      <p>No events found on this page.</p>
-    </div>
-    
-    <div v-else>
-      <p>Loading events...</p>
-    </div>
+<!--    <div class="events" v-if="events && events.length > 0">-->
+<!--      <EventCard-->
+<!--          v-for="event in events"-->
+<!--          :key="event.id"-->
+<!--          :event="event"-->
+<!--      />-->
+<!--    </div>-->
+<!--    -->
+<!--    <div v-else-if="events && events.length === 0">-->
+<!--      <p>No events found on this page.</p>-->
+<!--    </div>-->
+<!--    -->
+<!--    <div v-else>-->
+<!--      <p>Loading events...</p>-->
+<!--    </div>-->
 
+    <!-- 保留翻页功能-->
     <div class="pagination">
       <RouterLink
           id="page-prev"
@@ -125,14 +132,6 @@ watchEffect(() => {
 
 #page-next {
   text-align: right;
-}
-
-.events {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  margin: 2rem 0;
 }
 </style>
 
