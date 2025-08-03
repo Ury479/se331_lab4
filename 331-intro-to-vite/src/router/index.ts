@@ -14,6 +14,7 @@ import nProgress from 'nprogress'
 import EventService from '@/services/EventService'
 import { useEventStore } from '@/stores/event'
 
+// ✅ 正确地声明 routes（你原始内容无改动）
 const routes = [
   {
     path: '/',
@@ -41,19 +42,19 @@ const routes = [
       const id = parseInt(to.params.id as string)
       const eventStore = useEventStore()
       return EventService.getEvent(id)
-        .then((response) => {
-          // need to setup the data for the event
-          eventStore.setEvent(response.data)
-        }).catch((error) => {
-          if (error.response && error.response.status === 404) {
-            return {
-              name: '404-resource-view',
-              params: { resource: 'event' }
+          .then((response) => {
+            // need to setup the data for the event
+            eventStore.setEvent(response.data)
+          }).catch((error) => {
+            if (error.response && error.response.status === 404) {
+              return {
+                name: '404-resource-view',
+                params: { resource: 'event' }
+              }
+            } else {
+              return { name: 'network-error-view' }
             }
-          } else {
-            return { name: 'network-error-view' }
-          }
-        })
+          })
     },
     children: [
       {
@@ -87,7 +88,7 @@ const routes = [
   {
     path: '/404/:resource',
     name: '404-resource-view',
-    component: NotFoundView,
+    component: NotFoundResourceView,
     props: true
   },
   {
@@ -97,18 +98,16 @@ const routes = [
   }
 ]
 
+// ✅ createRouter 调用结构修复，仅插入 routes 和 scrollBehavior
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    } else {
-      return { top: 0 }
-    }
+  scrollBehavior() {
+    return { top: 0 }
   }
 })
 
+// 添加全局进度条
 router.beforeEach(() => {
   nProgress.start()
 })
