@@ -8,16 +8,16 @@ const { message } = storeToRefs(store)
 </script>
 
 <template>
-  <div id="layout">
+  <!--  修改 css 样式-->
+  <div class="text-center font-sans text-gray-700">
     <header>
-      <div id="flashMessage" v-if="message">
+      <div id="flashMessage" class="animate-fade" v-if="message">
         <h4>{{ message }}</h4>
       </div>
       <div class="wrapper">
         <nav>
-          <RouterLink :to="{ name: 'event-list' }">Events</RouterLink>
-          <RouterLink :to="{ name: 'passenger-list' }">Passengers</RouterLink>
-          <RouterLink :to="{ name: 'about' }">About</RouterLink>
+          <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'event-list' }" >Events</RouterLink>
+          <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'about' }">About</RouterLink>
         </nav>
       </div>
     </header>
@@ -32,18 +32,6 @@ const { message } = storeToRefs(store)
 </template>
 
 <style scoped>
-#layout {
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
 nav a {
   font-weight: bold;
   color: #2c3e50;
@@ -51,22 +39,5 @@ nav a {
 
 nav a.router-link-active {
   color: #42b983;
-}
-
-h2 {
-  font-size: 20px;
-}
-
-@keyframes yellowfade {
-  from {
-    background-color: yellow;
-  }
-  to {
-    background-color: transparent;
-  }
-}
-
-#flashMessage {
-  animation: yellowfade 3s ease-in-out;
 }
 </style>

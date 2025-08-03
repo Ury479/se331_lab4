@@ -120,18 +120,5 @@ watchEffect(() => {
   background-color: #e9ecef;
   transform: translateY(-1px);
 }
-
-.page-link {
-  cursor: pointer;
-  font-weight: bold;
-}
-
-#page-prev {
-  text-align: left;
-}
-
-#page-next {
-  text-align: right;
-}
 </style>
 
