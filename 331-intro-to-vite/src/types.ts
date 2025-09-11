@@ -1,12 +1,12 @@
 export interface Event {
-  id: number
+  id?: number // optional while creating
   category: string
   title: string
   description: string
   location: string
   date: string
   time: string
-  petsAllowed: boolean
+  petsAllowed?: boolean
   organizer: string
 }
 

@@ -19,39 +19,47 @@ const event = ref<Event>({
   <div>
     <h1>Create an event</h1>
     <form>
-      <label>Category</label>
-      <input
-          v-model="event.category"
-          type="text"
-          placeholder="Category"
-          class="field"
-      />
+      <div class="form-row">
+        <label class="form-label">Category</label>
+        <input
+            v-model="event.category"
+            type="text"
+            placeholder="Category"
+            class="field form-input"
+        />
+      </div>
 
       <h3>Name & describe your event</h3>
-      <label>Title</label>
-      <input
-          v-model="event.title"
-          type="text"
-          placeholder="Title"
-          class="field"
-      />
+      <div class="form-row">
+        <label class="form-label">Title</label>
+        <input
+            v-model="event.title"
+            type="text"
+            placeholder="Title"
+            class="field form-input"
+        />
+      </div>
 
-      <label>Description</label>
-      <input
-          v-model="event.description"
-          type="text"
-          placeholder="Description"
-          class="field"
-      />
+      <div class="form-row">
+        <label class="form-label">Description</label>
+        <input
+            v-model="event.description"
+            type="text"
+            placeholder="Description"
+            class="field form-input"
+        />
+      </div>
 
       <h3>Where is your event?</h3>
-      <label>Location</label>
-      <input
-          v-model="event.location"
-          type="text"
-          placeholder="Location"
-          class="field"
-      />
+      <div class="form-row">
+        <label class="form-label">Location</label>
+        <input
+            v-model="event.location"
+            type="text"
+            placeholder="Location"
+            class="field form-input"
+        />
+      </div>
 
       <button type="submit">Submit</button>
     </form>
@@ -59,3 +67,20 @@ const event = ref<Event>({
     <pre>{{ event }}</pre>
   </div>
 </template>
+
+<style scoped>
+.form-row {
+  margin-bottom: 16px;
+}
+
+/* 覆盖全局 inline-flex，避免 label 与 placeholder 同行显示造成视觉重复 */
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+}
+</style>
