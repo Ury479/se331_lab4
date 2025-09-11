@@ -25,7 +25,7 @@ onMounted(() => {
 
 <template>
   <div v-if="event">
-    <h2>{{ event.title }}</h2>
+    <h2>{{ event.title }} @ {{event.location}}</h2>
     <p>{{ event.description }}</p>
     <p>Organizer: {{ event.organizer }}</p>
     <p>Date: {{ event.date }} | Time: {{ event.time }}</p>

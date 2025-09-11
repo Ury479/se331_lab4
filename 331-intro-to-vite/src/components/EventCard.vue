@@ -11,6 +11,7 @@ defineProps<{
   <RouterLink class="event-link":to="{ name: 'event-layout-view', params: { id: event.id } }" >
     <div class="cursor-pointer border border-gray-600 p-4 w-64 mb-6 hover:scale-101 hover:shadow-sp">
       <h3>{{ event.title }}</h3>
+      <span>{{ event.category }} @ {{event.location}}}</span>
       <p>{{ event.description }}</p>
       <p><strong>Category:</strong> {{ event.category }}</p>
       <p><strong>Organizer:</strong> {{ event.organizer }}</p>

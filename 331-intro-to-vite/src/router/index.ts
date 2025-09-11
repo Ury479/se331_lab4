@@ -10,6 +10,7 @@ import NotFoundResourceView from '@/views/404ResourceView.vue'
 import NetworkErrorView from '@/views/NetworkErrorView.vue'
 import PassengerListView from '@/views/PassengerListView.vue'
 import AirlineDetailView from '@/views/AirlineDetailView.vue'
+import AddEventView from '@/views/AddEventView.vue'
 import nProgress from 'nprogress'
 import EventService from '@/services/EventService'
 import { useEventStore } from '@/stores/event'
@@ -95,7 +96,12 @@ const routes = [
     path: '/:catchAll(.*)',
     name: 'not-found',
     component: NotFoundView
-  }
+  },
+    {
+        path: '/add-event',
+        name: 'add-event',
+        component: AddEventView
+    }
 ]
 
 // ✅ createRouter 调用结构修复，仅插入 routes 和 scrollBehavior
