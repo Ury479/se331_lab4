@@ -3,6 +3,7 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
+    // 使用 Vite 推荐的 bundler 解析方式 (TS 5.x 支持)
     "moduleResolution": "bundler",
     "strict": true,
     "jsx": "preserve",
@@ -22,9 +23,5 @@
     {
       "path": "./tsconfig.node.json"
     }
-  ],
-//  按照 AI 建议补充的内容
-  "compilerOptions": {
-    "module": "node16"
-  }
+  ]
 }

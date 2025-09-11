@@ -18,7 +18,7 @@ const edit = () => {
   // Push back to the event details view and show flash message INSIDE the event-detail component
   store.updateMessage('The data has been updated')
   setTimeout(() => {
-    store.restoreMessage('')
+    store.restoreMessage()
   }, 3000)
   router.push({ name: 'event-detail', params: { id: props.event.id } })
 }

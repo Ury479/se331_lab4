@@ -2,12 +2,9 @@
 // Unified EventService (merged)
 // - Use Vite env for baseURL
 // - Provide typed wrappers for list/get/create/update
-
-import axios, { AxiosInstance } from 'axios'
-import type { Event } from '@/types'
-
+import axios from 'axios';
 /** Single axios client for the whole app */
-const apiClient: AxiosInstance = axios.create({
+const apiClient = axios.create({
     // IMPORTANT: backend base URL from .env.development → VITE_BACKEND_URL
     baseURL: import.meta.env.VITE_BACKEND_URL,
     withCredentials: false,
@@ -16,46 +13,42 @@ const apiClient: AxiosInstance = axios.create({
         'Content-Type': 'application/json'
     },
     timeout: 15000
-})
-
+});
 /** Helper: export so other services can reuse the same client if needed */
-export { apiClient }
-
+export { apiClient };
 export default {
     /**
      * GET /events?_limit=&_page=
      * Return a list of events with optional pagination.
      */
-    getEvents(params?: { _limit?: number; _page?: number }) {
-        return apiClient.get<Event[]>('/events', { params })
+    getEvents(params) {
+        return apiClient.get('/events', { params });
     },
-
     /**
      * GET /events/{id}
      * Return a single event by id.
      */
-    getEvent(id: number) {
-        return apiClient.get<Event>('/events/' + id)
+    getEvent(id) {
+        return apiClient.get('/events/' + id);
     },
-
     /**
      * POST /events
      * Create a new event.
      * Alias: saveEvent === createEvent (kept for backward compatibility).
      */
-    saveEvent(event: Event) {
-        return apiClient.post<Event>('/events', event)
+    saveEvent(event) {
+        return apiClient.post('/events', event);
     },
-    createEvent(event: Event) {
-        return apiClient.post<Event>('/events', event)
+    createEvent(event) {
+        return apiClient.post('/events', event);
     },
-
     /**
      * PUT /events
      * Update an existing event (expects id in payload).
      * If your backend uses POST /events/save, change the path below accordingly.
      */
-    updateEvent(event: Event) {
-        return apiClient.put<Event>('/events', event)
+    updateEvent(event) {
+        return apiClient.put('/events', event);
     }
-}
+};
+//# sourceMappingURL=EventService.js.map

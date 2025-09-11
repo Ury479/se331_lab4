@@ -28,7 +28,7 @@ const page = computed(() => props.page)
 watchEffect(() => {
   console.log('EventListView: Page changed to:', page.value)
   // 移除这里的 nProgress，因为路由中已经有全局的进度条
-  EventService.getEvents(perPage, page.value)
+  EventService.getEvents({ _limit: perPage, _page: page.value })
       .then((response) => {
         console.log('EventListView: Received data:', response.data)
         console.log('EventListView: Headers:', response.headers)

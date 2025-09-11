@@ -18,7 +18,7 @@ const register = () => {
   // Push back to the event details view
   store.updateMessage('You are successfully registered for ' + props.event.title)
   setTimeout(() => {
-    store.restoreMessage('')
+    store.restoreMessage()
   }, 3000)
   router.push({ name: 'event-detail', params: { id: props.event.id } })
 }

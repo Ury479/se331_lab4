@@ -1,5 +1,9 @@
 import type { Config } from 'tailwindcss'
 
+// Tailwind 配置整理：
+// 1. 将 fontFamily / animation / keyframes 等放入 theme.extend 保证生效
+// 2. 修正动画命名拼写 (yelloFade -> yellowFade)
+// 3. 保留原有阴影自定义
 export default {
   content: [
     './index.html',
@@ -7,23 +11,22 @@ export default {
   ],
   theme: {
     extend: {
-      // 添加阴影效果
       boxShadow: {
-        'sp': '0 3px 12px 0 rgba(255, 0, 0, 0.3)',
+        sp: '0 3px 12px 0 rgba(255, 0, 0, 0.3)'
+      },
+      fontFamily: {
+        sans: ['Avenir', 'Helvetica', 'Arial', 'sans-serif']
+      },
+      animation: {
+        fade: 'yellowFade 3s ease-in-out'
+      },
+      keyframes: {
+        yellowFade: {
+          '0%': { backgroundColor: 'yellow' },
+          '100%': { backgroundColor: 'transparent' }
+        }
       }
-    },
+    }
   },
-  fontFamily:{
-    sans: ['Avenir','Helvetica','Arial','sans-serif'],
-  },
-  animation:{
-    fade:'yellowFade 3s ease-in-out',
-  },
-  keyframes:{
-    yelloFade:{
-      '0%':{backgroundColor:'yellow'},
-      '100%':{backgroundColor:'transparent'},
-    },
-  },
-  plugins: [],
+  plugins: []
 } satisfies Config

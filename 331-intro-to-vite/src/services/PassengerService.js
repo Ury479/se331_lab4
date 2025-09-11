@@ -1,0 +1,21 @@
+import axios from 'axios';
+const apiClient = axios.create({
+    baseURL: 'https://api.instantwebtools.net/v1',
+    withCredentials: false,
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+    }
+});
+export default {
+    getPassengers(page = 0, size = 10) {
+        return apiClient.get(`/passenger?page=${page}&size=${size}`);
+    },
+    getPassenger(id) {
+        return apiClient.get(`/passenger/${id}`);
+    },
+    getAirline(id) {
+        return apiClient.get(`/airlines/${id}`);
+    }
+};
+//# sourceMappingURL=PassengerService.js.map
